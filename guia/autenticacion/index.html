@@ -1,0 +1,881 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Taller 04 de la materia Aplicaciones de código abierto">
+      
+      
+        <meta name="author" content="Duglas Pineda">
+      
+      
+      
+        <link rel="prev" href="../inicio/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Autenticación - Taller 04</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#guia-de-autenticacion" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Taller 04" class="md-header__button md-logo" aria-label="Taller 04" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Taller 04
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Autenticación
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-hidden="true"  type="radio" name="__palette" id="__palette_2">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Taller 04" class="md-nav__button md-logo" aria-label="Taller 04" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Taller 04
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Guía de uso
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Guía de uso
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inicio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Autenticación
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Autenticación
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resumen
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#obteniendo-tu-clave-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Obteniendo tu Clave API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Métodos de Autenticación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Métodos de Autenticación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autenticacion-por-header-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autenticación por Header (Recomendado)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autenticacion-por-parametro-de-consulta" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autenticación por Parámetro de Consulta
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-clave-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos de Clave API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#probando-tu-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Probando tu Autenticación
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#errores-comunes-de-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Errores Comunes de Autenticación
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejores-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mejores Prácticas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-de-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables de Entorno
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solucion-de-problemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solución de Problemas
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resumen
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#obteniendo-tu-clave-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Obteniendo tu Clave API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Métodos de Autenticación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Métodos de Autenticación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autenticacion-por-header-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autenticación por Header (Recomendado)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autenticacion-por-parametro-de-consulta" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autenticación por Parámetro de Consulta
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-clave-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos de Clave API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#probando-tu-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Probando tu Autenticación
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#errores-comunes-de-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Errores Comunes de Autenticación
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejores-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mejores Prácticas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-de-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables de Entorno
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solucion-de-problemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solución de Problemas
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="guia-de-autenticacion">Guía de Autenticación<a class="headerlink" href="#guia-de-autenticacion" title="Permanent link">#</a></h1>
+<p>¡Aprende cómo autenticarte con QuesadillaAPI para comenzar a hacer peticiones deliciosas!</p>
+<h2 id="resumen">Resumen<a class="headerlink" href="#resumen" title="Permanent link">#</a></h2>
+<p>QuesadillaAPI utiliza claves API para autenticación. Todas las peticiones deben incluir una clave API válida en el header de Authorization.</p>
+<div class="admonition info">
+<p class="admonition-title">Seguridad Primero</p>
+<p>Nunca subas tus claves API al control de versiones. Siempre usa variables de entorno o archivos de configuración seguros.</p>
+</div>
+<h2 id="obteniendo-tu-clave-api">Obteniendo tu Clave API<a class="headerlink" href="#obteniendo-tu-clave-api" title="Permanent link">#</a></h2>
+<ol>
+<li>Regístrate en <a href="https://quesadilla-api.com">quesadilla-api.com</a></li>
+<li>Verifica tu dirección de correo electrónico</li>
+<li>Navega a tu panel de control</li>
+<li>Haz clic en "Generar Clave API"</li>
+<li>Copia tu clave y guárdala de forma segura</li>
+</ol>
+<p><img alt="Generación de Clave API" src="../img/api-key-generation.png" /></p>
+<h2 id="metodos-de-autenticacion">Métodos de Autenticación<a class="headerlink" href="#metodos-de-autenticacion" title="Permanent link">#</a></h2>
+<h3 id="autenticacion-por-header-recomendado">Autenticación por Header (Recomendado)<a class="headerlink" href="#autenticacion-por-header-recomendado" title="Permanent link">#</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python</label><label for="__tabbed_1_2">JavaScript</label><label for="__tabbed_1_3">cURL</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>```python
+import requests</p>
+<p>headers = {
+    'Authorization': 'Bearer tu_clave_api_aqui',
+    'Content-Type': 'application/json'
+}</p>
+<p>response = requests.get(
+    'https://api.quesadilla.com/v1/quesadillas',
+    headers=headers
+)
+```</p>
+</div>
+<div class="tabbed-block">
+<p>```javascript
+const headers = {
+    'Authorization': 'Bearer tu_clave_api_aqui',
+    'Content-Type': 'application/json'
+};</p>
+<p>fetch('https://api.quesadilla.com/v1/quesadillas', {
+    method: 'GET',
+    headers: headers
+})
+.then(response =&gt; response.json())
+.then(data =&gt; console.log(data));
+```</p>
+</div>
+<div class="tabbed-block">
+<p><code>bash
+curl -X GET "https://api.quesadilla.com/v1/quesadillas" \
+     -H "Authorization: Bearer tu_clave_api_aqui" \
+     -H "Content-Type: application/json"</code></p>
+</div>
+</div>
+</div>
+<h3 id="autenticacion-por-parametro-de-consulta">Autenticación por Parámetro de Consulta<a class="headerlink" href="#autenticacion-por-parametro-de-consulta" title="Permanent link">#</a></h3>
+<p>Solo para propósitos de prueba, también puedes usar parámetros de consulta:</p>
+<pre><code>GET https://api.quesadilla.com/v1/quesadillas?api_key=tu_clave_api_aqui
+</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Riesgo de Seguridad</p>
+<p>Usar claves API en URLs es menos seguro y solo debe usarse para pruebas. Las URLs pueden ser registradas por servidores y proxies.</p>
+</div>
+<h2 id="tipos-de-clave-api">Tipos de Clave API<a class="headerlink" href="#tipos-de-clave-api" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Descripción</th>
+<th>Límite de Velocidad</th>
+<th>Precio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gratuito</td>
+<td>Acceso básico</td>
+<td>100 req/hora</td>
+<td>Gratis</td>
+</tr>
+<tr>
+<td>Inicial</td>
+<td>Apps pequeñas</td>
+<td>1,000 req/hora</td>
+<td>$9/mes</td>
+</tr>
+<tr>
+<td>Profesional</td>
+<td>Apps en producción</td>
+<td>10,000 req/hora</td>
+<td>$29/mes</td>
+</tr>
+<tr>
+<td>Empresarial</td>
+<td>Alto volumen</td>
+<td>Ilimitado</td>
+<td>Personalizado</td>
+</tr>
+</tbody>
+</table>
+<h2 id="probando-tu-autenticacion">Probando tu Autenticación<a class="headerlink" href="#probando-tu-autenticacion" title="Permanent link">#</a></h2>
+<p>Usa esta prueba simple para verificar que tu clave API funciona:</p>
+<pre><code class="language-python">import requests
+import os
+
+def test_auth():
+    api_key = os.getenv('QUESADILLA_API_KEY')
+
+    if not api_key:
+        print(&quot;❌ No se encontró clave API en variables de entorno&quot;)
+        return False
+
+    headers = {'Authorization': f'Bearer {api_key}'}
+    response = requests.get(
+        'https://api.quesadilla.com/v1/health',
+        headers=headers
+    )
+
+    if response.status_code == 200:
+        print(&quot;✅ ¡Autenticación exitosa!&quot;)
+        print(f&quot;Clave API: {api_key[:8]}...&quot;)
+        return True
+    else:
+        print(f&quot;❌ Falló la autenticación: {response.status_code}&quot;)
+        return False
+
+# Ejecutar la prueba
+test_auth()
+</code></pre>
+<h2 id="errores-comunes-de-autenticacion">Errores Comunes de Autenticación<a class="headerlink" href="#errores-comunes-de-autenticacion" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Código de Estado</th>
+<th>Error</th>
+<th>Solución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>401</td>
+<td>No autorizado</td>
+<td>Verifica que tu clave API sea correcta</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Prohibido</td>
+<td>Tu plan no permite este endpoint</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Demasiadas Peticiones</td>
+<td>Has excedido tu límite de velocidad</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mejores-practicas">Mejores Prácticas<a class="headerlink" href="#mejores-practicas" title="Permanent link">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Consejos de Seguridad</p>
+<ul>
+<li>Guarda las claves API en variables de entorno</li>
+<li>Usa diferentes claves para desarrollo y producción</li>
+<li>Rota tus claves regularmente (cada 90 días)</li>
+<li>Monitorea tu uso para detectar acceso no autorizado</li>
+</ul>
+</div>
+<h2 id="variables-de-entorno">Variables de Entorno<a class="headerlink" href="#variables-de-entorno" title="Permanent link">#</a></h2>
+<p>Crea un archivo <code>.env</code> para tu clave API:</p>
+<pre><code class="language-env"># Configuración de QuesadillaAPI
+QUESADILLA_API_KEY=qsa_1234567890abcdef
+QUESADILLA_ENVIRONMENT=development
+</code></pre>
+<p>Luego cárgalo en tu aplicación:</p>
+<pre><code class="language-python">import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+api_key = os.getenv('QUESADILLA_API_KEY')
+</code></pre>
+<h2 id="solucion-de-problemas">Solución de Problemas<a class="headerlink" href="#solucion-de-problemas" title="Permanent link">#</a></h2>
+<p>Si tienes problemas de autenticación:</p>
+<ol>
+<li>Revisa la <a href="../inicio/">guía de inicio</a> para instrucciones de configuración</li>
+<li>Verifica tu clave API en el panel de control</li>
+<li>Asegúrate de estar usando los headers correctos</li>
+<li>Consulta nuestra <a href="../../">documentación principal</a> para ejemplos</li>
+</ol>
+<p>¿Necesitas ayuda? Contacta a nuestro equipo de soporte en <code>support@quesadilla-api.com</code></p>
+<p><img alt="Flujo de Autenticación" src="../img/auth-flow.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>
